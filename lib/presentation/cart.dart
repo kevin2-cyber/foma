@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foma/core/app_constants.dart';
 import 'package:foma/presentation/widgets/cart_item.dart';
-import 'package:foma/provider/product_provider.dart';
+import 'package:foma/provider/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../model/product.dart';
@@ -19,7 +19,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     productsInCarts = AppConstants.kDummyData;
-    Provider.of<ProductProvider>(context);
+    Provider.of<CartProvider>(context);
     super.initState();
   }
 
@@ -29,7 +29,7 @@ class _CartScreenState extends State<CartScreen> {
       body: ListView.builder(
         itemCount: productsInCarts.length,
         itemBuilder: (context, index) => CartItem(
-              onTap: () => Provider.of<ProductProvider>(context).delete(productsInCarts[index]),
+              onTap: () => Provider.of<CartProvider>(context).remove(productsInCarts[index]),
               image: productsInCarts[index].image,
               name: productsInCarts[index].name,
               price: productsInCarts[index].price,
