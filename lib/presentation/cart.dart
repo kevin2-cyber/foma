@@ -6,30 +6,30 @@ import 'package:provider/provider.dart';
 
 import '../model/product.dart';
 
-class Cart extends StatefulWidget {
-  const Cart({super.key});
+class CartScreen extends StatefulWidget {
+  const CartScreen({super.key});
 
   @override
-  State<Cart> createState() => _CartState();
+  State<CartScreen> createState() => _CartScreenState();
 }
 
-class _CartState extends State<Cart> {
+class _CartScreenState extends State<CartScreen> {
   List<Product> productsInCarts = [];
 
   @override
   void initState() {
     productsInCarts = AppConstants.kDummyData;
+    Provider.of<ProductProvider>(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var cart = context.watch<ProductProvider>();
     return Scaffold(
       body: ListView.builder(
         itemCount: productsInCarts.length,
         itemBuilder: (context, index) => CartItem(
-          onTap: () => cart.delete(productsInCarts[index]),
+          onTap: () => Provider.of<ProductProvider>(context).delete(productsInCarts[index]),
               image: productsInCarts[index].image,
               name: productsInCarts[index].name,
               price: productsInCarts[index].price,
