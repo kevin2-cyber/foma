@@ -29,7 +29,7 @@ class _CartScreenState extends State<CartScreen> {
       body: ListView.builder(
         itemCount: productsInCarts.length,
         itemBuilder: (context, index) => CartItem(
-          onTap: () => Provider.of<ProductProvider>(context).delete(productsInCarts[index]),
+              onTap: () => Provider.of<ProductProvider>(context).delete(productsInCarts[index]),
               image: productsInCarts[index].image,
               name: productsInCarts[index].name,
               price: productsInCarts[index].price,
