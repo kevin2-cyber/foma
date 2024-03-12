@@ -4,14 +4,14 @@ class CartItem extends StatefulWidget {
   final String name;
   final String image;
   final double price;
-  final Function() onTap;
+  final VoidCallback onTap;
 
   const CartItem({
     super.key,
     required this.name,
     required this.image,
     required this.price,
-    required this.onTap
+    required this.onTap,
   });
 
   @override
@@ -36,7 +36,7 @@ class _CartItemState extends State<CartItem> {
               children: [
                 const Icon(Icons.image),
                 MaterialButton(
-                    onPressed: () {},
+                    onPressed: widget.onTap,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     shape: const CircleBorder(
                         side: BorderSide(

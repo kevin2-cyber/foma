@@ -19,17 +19,17 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     productsInCarts = AppConstants.kDummyData;
-    Provider.of<CartProvider>(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       body: ListView.builder(
         itemCount: productsInCarts.length,
         itemBuilder: (context, index) => CartItem(
-              onTap: () => Provider.of<CartProvider>(context).remove(productsInCarts[index]),
+              onTap: () => cartProvider.remove(productsInCarts[index]),
               image: productsInCarts[index].image,
               name: productsInCarts[index].name,
               price: productsInCarts[index].price,
