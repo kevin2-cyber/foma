@@ -15,12 +15,12 @@ class AppConstants {
   static const kWaterBlue = Color(0xFF0F96BB);
   
   static const kDummyData = <Product>[
-    Product(id: 0,image: controller, name: 'DualSense Wireless Controller', price: '69.99'),
-    Product(id: 1, image: playstation, name: 'DualSense Wireless Controller', price: '69.99'),
-    Product(id: 2, image: ps, name: 'DualSense Wireless Controller', price: '69.99'),
-    Product(id: 3, image: jblBoomBox, name: 'JBL Boom Box 2', price: '69.99'),
-    Product(id: 4, image: jblGo, name: 'JBL GO 2', price: '69.99'),
-    Product(id: 5, image: jblFlip, name: 'JBL Flip 5 speaker', price: '69.99'),
+    Product(id: 0,image: controller, name: 'Wireless Controller', price: 69.99),
+    Product(id: 1, image: playstation, name: 'Wireless Controller', price: 69.99),
+    Product(id: 2, image: ps, name: 'Wireless Controller', price: 69.99),
+    Product(id: 3, image: jblBoomBox, name: 'JBL Boom Box 2', price: 69.99),
+    Product(id: 4, image: jblGo, name: 'JBL GO 2', price: 69.99),
+    Product(id: 5, image: jblFlip, name: 'JBL Flip 5 speaker', price: 69.99),
   ];
 
 

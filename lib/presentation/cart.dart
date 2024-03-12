@@ -18,31 +18,22 @@ class _CartState extends State<Cart> {
 
   @override
   void initState() {
-    Provider.of<ProductProvider>(context,listen: false).initProducts();
     productsInCarts = AppConstants.kDummyData;
     super.initState();
   }
 
-  void delete(int index) {
-    setState(() {
-      productsInCarts.removeAt(index);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    var cart = context.watch<ProductProvider>();
     return Scaffold(
-      drawer: const Drawer(),
       body: ListView.builder(
         itemCount: productsInCarts.length,
-        itemBuilder: (context, index) {
-          return CartItem(
+        itemBuilder: (context, index) => CartItem(
+          onTap: () => cart.delete(productsInCarts[index]),
               image: productsInCarts[index].image,
               name: productsInCarts[index].name,
               price: productsInCarts[index].price,
-            onTap: () => delete,
-          );
-        },
+          ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: MaterialButton(

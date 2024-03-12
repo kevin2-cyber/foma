@@ -24,7 +24,7 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clear() {
+  void removeAll() {
     products.clear();
     notifyListeners();
   }
