@@ -16,57 +16,70 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF9F9F9),
       appBar: AppBar(
         automaticallyImplyLeading: true,
         title: const Text('Cart'),
       ),
       body: Consumer<CartProvider>(
-        builder: (context, provider, child) => Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.60,
-              child: ListView.builder(
-                itemCount: provider.items.length,
-                itemBuilder: (context, index) {
-                  Product product = provider.items[index];
-                  return Card(
-                    margin: const EdgeInsets.only(left: 16, right: 16, top: 10),
-                    child: ListTile(
-                      leading: Image.asset(
-                        product.image,
-                        height: 120,
-                        width: 100,
-                        fit: BoxFit.fill,
+        builder: (context, provider, child) {
+          return SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: ListView.builder(
+                  itemCount: provider.items.length,
+                  itemBuilder: (context, index) {
+                    Product product = provider.items[index];
+                    return Container(
+                      height: MediaQuery.of(context).size. height * 0.1,
+                      margin: const EdgeInsets.all(20),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.all(Radius.circular(24)),
+                        backgroundBlendMode: BlendMode.colorDodge
                       ),
-                      title: Text(product.name),
-                      titleAlignment: ListTileTitleAlignment.top,
-                      subtitle: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text('${product.price}\$'),
-                        ],
-                      ),
-                      trailing: MaterialButton(
-                        onPressed: () => provider.remove(product),
-                        height: 20,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        shape: CircleBorder(
-                          side:
-                              BorderSide(color: Theme.of(context).primaryColor),
+                      child: ListTile(
+                        isThreeLine: true,
+                        leading: Image.asset(
+                          product.image,
+                          height: 120,
+                          width: 100,
+                          fit: BoxFit.fill,
                         ),
-                        child: const Icon(
-                          Icons.clear,
-                          size: 16,
+                        title: Text(product.name),
+                        titleAlignment: ListTileTitleAlignment.threeLine,
+                        subtitle: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text('${product.price}\$'),
+                          ],
+                        ),
+                        trailing: MaterialButton(
+                          onPressed: () => provider.remove(product),
+                          height: 20,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          shape: CircleBorder(
+                            side: BorderSide(
+                                color: Theme.of(context).primaryColor),
+                          ),
+                          child: const Icon(
+                            Icons.clear,
+                            size: 16,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            Text("Cart Total: \$${provider.getCartTotal()}"),
-          ],
-        ),
+              Text("Cart Total: \$${provider.getCartTotal()}"),
+            ],
+          ),
+        );
+        },
       ),
       bottomNavigationBar: BottomAppBar(
         child: MaterialButton(
